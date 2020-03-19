@@ -13,6 +13,7 @@
     "eslint-plugin-react": "^7.19.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-motion": "^0.5.2",
     "react-scripts": "3.4.0",
     "styled-components": "^5.0.1",
     "typescript": "~3.7.2"
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-motion": "^0.0.29",
     "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
