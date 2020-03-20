@@ -14,4 +14,4 @@ Coming soon
  - Styled Components
 
 ## License
-Licensed under MIT. See [LICENSE](LICENSE.md) for details.
+Licensed under MIT. See [LICENSE](LICENSE) for details.
