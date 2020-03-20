@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import TitleHeader from '../components/TitleHeader';
 import TitleInput from '../components/TitleInput';
+import TitleButton from '../components/TitleButton';
 
 const Container = styled.div`
   display: flex;
@@ -16,10 +17,19 @@ const Container = styled.div`
 const StartScreen = () => {
   const [name, setName] = useState('');
 
+  const handleClick = () => {
+    console.log('clicked');
+  };
+
   return (
     <Container>
       <TitleHeader text="Insira seu nome" />
       <TitleInput setValue={setName} />
+      <TitleButton
+        label="Iniciar corrida"
+        isVisible={name.length >= 3}
+        onClick={handleClick}
+      />
     </Container>
   );
 };
