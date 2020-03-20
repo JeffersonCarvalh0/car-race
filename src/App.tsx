@@ -1,10 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import GlobalStyle from './globalStyle';
+import StartScreen from './pages/StartScreen';
+
 const Container = styled.div`
-  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
-const App = (): JSX.Element => <Container>Hello, World!</Container>;
+const App = () => (
+  <>
+    <GlobalStyle />
+    <Container>
+      <StartScreen />
+    </Container>
+  </>
+);
 
 export default App;
