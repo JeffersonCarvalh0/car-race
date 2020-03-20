@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import TitleInput from './TitleInput';
 
 test('Renders the input and set values correctly', () => {
@@ -10,7 +11,7 @@ test('Renders the input and set values correctly', () => {
   const element = getByTestId('TitleInput') as HTMLInputElement;
   expect(element).toBeInTheDocument();
 
-  fireEvent.change(element, { target: { value: 'test' } });
+  userEvent.type(element, 'test');
   expect(handleChange).toHaveBeenCalled();
   expect(element.value).toBe('test');
 });
