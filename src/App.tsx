@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import GlobalStyle from './globalStyle';
 import StartScreen from './pages/StartScreen';
-import SlideInMotion from './components/SlideInMotion';
-import SlideOutMotion from './components/SlideOutMotion';
 
 const Container = styled.div`
+  height: 100vh;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  min-height: 100vh;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const App = () => {
@@ -25,15 +28,22 @@ const App = () => {
     />
   );
 
+  const gameScreen = <h1>Testing</h1>;
+
   return (
     <>
       <GlobalStyle />
       <Container>
-        {!hasGameStarted ? (
-          <SlideInMotion>{startScreen}</SlideInMotion>
-        ) : (
-          <SlideOutMotion>{startScreen}</SlideOutMotion>
-        )}
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            key={hasGameStarted ? 'gameScreen' : 'startScreen'}
+            initial={{ x: 600, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -600, opacity: 0 }}
+          >
+            {hasGameStarted ? gameScreen : startScreen}
+          </motion.div>
+        </AnimatePresence>
       </Container>
     </>
   );
