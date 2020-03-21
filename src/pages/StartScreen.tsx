@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import TitleHeader from '../components/TitleHeader';
@@ -14,17 +14,30 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const StartScreen = () => {
-  const [name, setName] = useState('');
+interface StyledErrorTextProps {
+  isVisible: boolean;
+}
+const ErrorText = styled.text`
+  visibility: ${(props: StyledErrorTextProps) =>
+    props.isVisible ? 'visible' : 'hidden'};
+  color: red;
+  font-size: 18px;
+`;
 
-  const handleClick = () => {
-    console.log('clicked');
-  };
-
+interface Props {
+  name: string;
+  setName: (name: string) => void;
+  handleClick: (event: React.MouseEvent) => void;
+  errorMsg?: string;
+}
+const StartScreen = ({ name, setName, handleClick, errorMsg }: Props) => {
   return (
     <Container>
-      <TitleHeader text="Insira seu nome" />
+      <TitleHeader text="Insira seu nome(min. 3 caracteres)" />
       <TitleInput setValue={setName} />
+      <ErrorText isVisible={errorMsg != null && errorMsg.length != 0}>
+        {errorMsg}
+      </ErrorText>
       <TitleButton
         label="Iniciar corrida"
         isVisible={name.length >= 3}
