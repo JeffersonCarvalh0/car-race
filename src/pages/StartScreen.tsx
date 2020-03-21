@@ -34,7 +34,7 @@ const StartScreen = ({ name, setName, handleStart, errorMsg }: Props) => {
       <TitleInput
         setValue={setName}
         onKeyDown={(event: React.KeyboardEvent) => {
-          if (event.key == 'Enter' && name.length >= 3) {
+          if (event.key === 'Enter' && name.length >= 3) {
             handleStart(event);
           }
         }}
