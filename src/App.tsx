@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GlobalStyle from './globalStyle';
 import StartScreen from './pages/StartScreen';
 import SlideInMotion from './components/SlideInMotion';
+import SlideOutMotion from './components/SlideOutMotion';
 
 const Container = styled.div`
   display: flex;
@@ -13,20 +14,26 @@ const Container = styled.div`
 
 const App = () => {
   const [name, setName] = useState('');
+  const [hasGameStarted, setGameStarted] = useState(false);
+  const handleStartGameClick = () => setGameStarted(!hasGameStarted);
 
-  const handleStartGameClick = () => console.log('heya');
+  const startScreen = (
+    <StartScreen
+      name={name}
+      setName={setName}
+      handleClick={handleStartGameClick}
+    />
+  );
 
   return (
     <>
       <GlobalStyle />
       <Container>
-        <SlideInMotion>
-          <StartScreen
-            name={name}
-            setName={setName}
-            handleClick={handleStartGameClick}
-          />
-        </SlideInMotion>
+        {!hasGameStarted ? (
+          <SlideInMotion>{startScreen}</SlideInMotion>
+        ) : (
+          <SlideOutMotion>{startScreen}</SlideOutMotion>
+        )}
       </Container>
     </>
   );

@@ -6,7 +6,7 @@ interface StyledProps {
   x: number;
   opacity: number;
 }
-const SlideInStyle = styled.section`
+const SlideOutStyle = styled.section`
   display: flex;
   flex: 1;
   transform: ${(props: StyledProps) => `translateX(${props.x}px)`};
@@ -16,19 +16,19 @@ const SlideInStyle = styled.section`
 interface Props {
   children: React.ReactNode;
 }
-const SlideInMotion = ({ children }: Props) => {
+const SlideOutMotion = ({ children }: Props) => {
   return (
     <Motion
-      defaultStyle={{ x: 600, opacity: 0 }}
-      style={{ x: spring(0), opacity: spring(1) }}
+      defaultStyle={{ x: 0, opacity: 1 }}
+      style={{ x: spring(-300), opacity: spring(0) }}
     >
       {({ x, opacity }) => (
-        <SlideInStyle x={x} opacity={opacity}>
+        <SlideOutStyle x={x} opacity={opacity}>
           {children}
-        </SlideInStyle>
+        </SlideOutStyle>
       )}
     </Motion>
   );
 };
 
-export default SlideInMotion;
+export default SlideOutMotion;
