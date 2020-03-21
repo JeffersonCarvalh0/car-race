@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import GlobalStyle from './globalStyle';
 import StartScreen from './pages/StartScreen';
+import GameScreen from './pages/GameScreen';
 
 const Container = styled.div`
   height: 100vh;
@@ -20,16 +21,6 @@ const App = () => {
   const [hasGameStarted, setGameStarted] = useState(false);
   const handleStartGameClick = () => setGameStarted(!hasGameStarted);
 
-  const startScreen = (
-    <StartScreen
-      name={name}
-      setName={setName}
-      handleClick={handleStartGameClick}
-    />
-  );
-
-  const gameScreen = <h1>Testing</h1>;
-
   return (
     <>
       <GlobalStyle />
@@ -41,7 +32,15 @@ const App = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -600, opacity: 0 }}
           >
-            {hasGameStarted ? gameScreen : startScreen}
+            {hasGameStarted ? (
+              <GameScreen />
+            ) : (
+              <StartScreen
+                name={name}
+                setName={setName}
+                handleStart={handleStartGameClick}
+              />
+            )}
           </motion.div>
         </AnimatePresence>
       </Container>

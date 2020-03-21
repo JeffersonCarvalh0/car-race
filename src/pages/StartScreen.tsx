@@ -14,7 +14,7 @@ const Container = styled.div`
 interface StyledErrorTextProps {
   isVisible: boolean;
 }
-const ErrorText = styled.text`
+const ErrorText = styled.h1`
   visibility: ${(props: StyledErrorTextProps) =>
     props.isVisible ? 'visible' : 'hidden'};
   color: red;
