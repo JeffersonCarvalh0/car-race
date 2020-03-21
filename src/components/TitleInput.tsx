@@ -20,12 +20,19 @@ const Input = styled.input`
 
 interface Props {
   setValue: Function;
+  onKeyDown?: (event: React.KeyboardEvent) => void;
 }
-const TitleInput = ({ setValue }: Props) => {
+const TitleInput = ({ setValue, onKeyDown }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setValue(event.target.value);
 
-  return <Input data-testid="TitleInput" onChange={handleChange} />;
+  return (
+    <Input
+      data-testid="TitleInput"
+      onChange={handleChange}
+      onKeyDown={onKeyDown}
+    />
+  );
 };
 
 export default TitleInput;

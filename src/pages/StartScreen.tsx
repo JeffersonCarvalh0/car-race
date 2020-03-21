@@ -7,11 +7,8 @@ import TitleButton from '../components/TitleButton';
 
 const Container = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-content: center;
   align-items: center;
-  justify-content: center;
 `;
 
 interface StyledErrorTextProps {
@@ -27,21 +24,32 @@ const ErrorText = styled.text`
 interface Props {
   name: string;
   setName: (name: string) => void;
-  handleClick: (event: React.MouseEvent) => void;
+  handleStart: (event: React.MouseEvent | React.KeyboardEvent) => void;
   errorMsg?: string;
 }
-const StartScreen = ({ name, setName, handleClick, errorMsg }: Props) => {
+const StartScreen = ({ name, setName, handleStart, errorMsg }: Props) => {
   return (
     <Container>
       <TitleHeader text="Insira seu nome(min. 3 caracteres)" />
-      <TitleInput setValue={setName} />
-      <ErrorText isVisible={errorMsg != null && errorMsg.length != 0}>
+      <TitleInput
+        setValue={setName}
+        onKeyDown={(event: React.KeyboardEvent) => {
+          if (event.key == 'Enter' && name.length >= 3) {
+            handleStart(event);
+          }
+        }}
+      />
+      <ErrorText
+        isVisible={
+          errorMsg !== null && errorMsg !== undefined && errorMsg.length !== 0
+        }
+      >
         {errorMsg}
       </ErrorText>
       <TitleButton
         label="Iniciar corrida"
         isVisible={name.length >= 3}
-        onClick={handleClick}
+        onClick={handleStart}
       />
     </Container>
   );
