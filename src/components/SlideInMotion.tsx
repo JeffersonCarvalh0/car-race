@@ -7,6 +7,8 @@ interface StyledProps {
   opacity: number;
 }
 const SlideInStyle = styled.section`
+  display: flex;
+  flex: 1;
   transform: ${(props: StyledProps) => `translateX(${props.x}px)`};
   opacity: ${(props: StyledProps) => props.opacity};
 `;

@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SlideInMotion from './SlideInMotion';
-
 const Input = styled.input`
   border: none;
   text-align: center;
@@ -27,11 +25,7 @@ const TitleInput = ({ setValue }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setValue(event.target.value);
 
-  return (
-    <SlideInMotion>
-      <Input data-testid="TitleInput" onChange={handleChange} />
-    </SlideInMotion>
-  );
+  return <Input data-testid="TitleInput" onChange={handleChange} />;
 };
 
 export default TitleInput;
