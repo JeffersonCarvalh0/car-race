@@ -45,18 +45,43 @@ const Car = styled.img`
 const GameScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(Position.Middle);
 
+  const moveLeft = (position: Position) => {
+    if (position != Position.Left) {
+      setCurrentPosition(position - 1);
+    }
+  };
+
+  const moveRight = (position: Position) => {
+    if (position != Position.Right) {
+      setCurrentPosition(position + 1);
+    }
+  };
+
   const handleControls = (event: React.KeyboardEvent): void => {
     switch (event.keyCode) {
       case 65: {
+        // A
         setCurrentPosition(Position.Left);
         break;
       }
       case 83: {
+        // S
         setCurrentPosition(Position.Middle);
         break;
       }
       case 68: {
+        // D
         setCurrentPosition(Position.Right);
+        break;
+      }
+      case 37: {
+        // Left Arrow
+        moveLeft(currentPosition);
+        break;
+      }
+      case 39: {
+        // Right Arrow
+        moveRight(currentPosition);
         break;
       }
     }
