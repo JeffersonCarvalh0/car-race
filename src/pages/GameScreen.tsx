@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import useEventListener from '@use-it/event-listener';
 
 import background from '../assets/background.gif';
-import car from '../assets/car.png';
-
-interface Props {
-  position: Position;
-}
+import Car from '../components/Car';
 
 export enum Position {
   Left,
@@ -16,31 +12,10 @@ export enum Position {
 }
 
 const Background = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: ${(props: Props) => {
-    switch (props.position) {
-      case Position.Left:
-        return 'flex-start';
-      case Position.Middle:
-        return 'center';
-      case Position.Right:
-        return 'flex-end';
-    }
-  }};
-  align-items: flex-end;
-  text-align: center;
   background-image: url(${background});
   background-size: 100% 100%;
   width: 100vh;
   height: 100vh;
-  transition: flex 250ms ease;
-`;
-
-const Car = styled.img`
-  width: 200px;
-  height: 200px;
 `;
 
 const CountdownNumber = styled.h1`
@@ -109,9 +84,9 @@ const GameScreen = () => {
 
   return (
     <>
-      <Background position={currentPosition}>
+      <Background>
         {timerValue >= 0 && <CountdownNumber>{timerValue}</CountdownNumber>}
-        <Car src={car} alt="car" />
+        <Car position={currentPosition} />
       </Background>
     </>
   );
