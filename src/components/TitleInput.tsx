@@ -10,7 +10,6 @@ const Input = styled.input`
   background-color: lightGray;
   transition: background-color 250ms ease, color 250ms ease;
   color: #fff;
-  border-radius: 50px;
 
   &:focus {
     outline: none;

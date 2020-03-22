@@ -8,7 +8,6 @@ const Button = styled.button`
   opacity: ${(props: StyledProps) => (props.isVisible ? '1' : '0')};
   transition: opacity 250ms ease;
   margin-top: 20px;
-  border-radius: 50px;
   border: none;
   width: 120px;
   height: 40px;
