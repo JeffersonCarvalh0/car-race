@@ -5,6 +5,7 @@ const Input = styled.input`
   border: none;
   text-align: center;
   height: 30px;
+  font-family: Retro Gaming;
   font-size: 16px;
   background-color: lightGray;
   transition: background-color 250ms ease, color 250ms ease;

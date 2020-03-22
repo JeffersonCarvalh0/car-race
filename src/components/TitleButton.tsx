@@ -14,6 +14,7 @@ const Button = styled.button`
   height: 40px;
   background-color: rgb(59, 134, 255);
   color: white;
+  font-family: Retro Gaming;
 
   &:focus {
     outline: none;
