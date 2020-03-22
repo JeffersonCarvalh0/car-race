@@ -3,13 +3,7 @@ import styled from 'styled-components';
 import useEventListener from '@use-it/event-listener';
 
 import background from '../assets/background.gif';
-import Car from '../components/Car';
-
-export enum Position {
-  Left,
-  Middle,
-  Right,
-}
+import Car, { Position } from '../components/Car';
 
 const Background = styled.div`
   background-image: url(${background});

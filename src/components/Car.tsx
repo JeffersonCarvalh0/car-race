@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import car from '../assets/car.png';
-import { Position } from '../pages/GameScreen';
+
+export enum Position {
+  Left,
+  Middle,
+  Right,
+}
 
 interface StyledProps {
   x: string;
