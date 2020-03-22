@@ -6,7 +6,11 @@ After cloning the repository, run `yarn` to download the deps, and `yarn start`
 to run in your browser.
 
 ## How to play
-Coming soon
+ - A - left lane
+ - S - middle lane
+ - D - right lane
+ - Left arrow - move left
+ - Right arrow - move right
 
 ## Built with
  - Typescript
