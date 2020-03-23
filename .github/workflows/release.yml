@@ -19,5 +19,6 @@ jobs:
           ref: master
           
       - uses: actions/setup-node@v1
+      - run: yarn add
       - run: yarn deploy
       
