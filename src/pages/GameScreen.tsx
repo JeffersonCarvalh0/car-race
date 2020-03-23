@@ -36,6 +36,27 @@ const TapAreaRecognizer = styled.div`
   width: 100%;
   height: 100%;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+`;
+
+const PauseButton = styled.button`
+  color: red;
+  margin: 20px 20px 0 0;
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+  z-index: 2;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
 `;
 
 const GameScreen = () => {
@@ -43,6 +64,13 @@ const GameScreen = () => {
   const [timerValue, setTimerValue] = useState(3);
   const [isPaused, setPaused] = useState(false);
   const shouldHandleControls = timerValue === -1 && !isPaused;
+  const shouldHandleUI = timerValue === -1;
+
+  const togglePaused = () => {
+    if (shouldHandleUI) {
+      setPaused(!isPaused);
+    }
+  };
 
   const moveLeft = () => {
     if (currentPosition !== Position.Left) {
@@ -93,10 +121,10 @@ const GameScreen = () => {
       }
     }
 
-    if (timerValue === -1) {
+    if (shouldHandleUI) {
       switch (event.key) {
         case 'Escape': {
-          setPaused(!isPaused);
+          togglePaused();
           break;
         }
       }
@@ -115,12 +143,21 @@ const GameScreen = () => {
       <Background isPaused={isPaused}>
         {timerValue >= 0 && <CenteredText>{timerValue}</CenteredText>}
         {isPaused && <PauseOverlay />}
-        <Car position={currentPosition} />
         <TapAreaWrapper>
           <TapAreaRecognizer onClick={handleTap(Position.Left)} />
           <TapAreaRecognizer onClick={handleTap(Position.Middle)} />
-          <TapAreaRecognizer onClick={handleTap(Position.Right)} />
+          <TapAreaRecognizer onClick={handleTap(Position.Right)}>
+            <PauseButton
+              onClick={e => {
+                e.stopPropagation();
+                togglePaused();
+              }}
+            >
+              ||
+            </PauseButton>
+          </TapAreaRecognizer>
         </TapAreaWrapper>
+        <Car position={currentPosition} />
       </Background>
     </>
   );
