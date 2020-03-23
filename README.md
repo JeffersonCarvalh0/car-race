@@ -15,6 +15,7 @@ to run in your browser.
  - D - right lane
  - Left arrow - move left
  - Right arrow - move right
+ - Escape - Toggle pause
 
 ## Built with
  - Typescript
