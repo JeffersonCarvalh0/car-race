@@ -23,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\""
   },
   "eslintConfig": {
     "extends": "react-app"
