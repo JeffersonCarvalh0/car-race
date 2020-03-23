@@ -12,16 +12,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
 
     steps:
       - name: checkout
-        if: github.event.pull_request.merged
         uses: actions/checkout@v1
         with:
           ref: master
           
       - uses: actions/setup-node@v1
       - run: yarn add
+      - run: yarn install
+      - run: yarn type-check
+      - run: yarn lint
+      - run: yarn test
       - run: yarn deploy
       
