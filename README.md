@@ -3,6 +3,8 @@
 # Car Race
 A simple car racing game that runs on the browser.
 
+[CLICK HERE](https://jeffersoncarvalh0.github.io/car-race/) to play the game!
+
 ## Build instructions
 After cloning the repository, run `yarn` to download the deps, and `yarn start`
 to run in your browser.
