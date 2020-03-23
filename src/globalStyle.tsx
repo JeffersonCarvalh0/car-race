@@ -15,7 +15,17 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: Retro Gaming;
-    font-size: 12px;
+    font-size: calc(1em + 1vw);
+  }
+
+  button {
+    font-family: Retro Gaming;
+    font-size: inherit;
+  }
+
+  input {
+    font-family: Retro Gaming;
+    font-size: inherit;
   }
 `;
 

@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   border: none;
+  padding: 5px;
   text-align: center;
-  height: 30px;
-  font-family: Retro Gaming;
-  font-size: 16px;
+  height: 5%;
   background-color: lightGray;
   transition: background-color 250ms ease, color 250ms ease;
   color: #fff;
