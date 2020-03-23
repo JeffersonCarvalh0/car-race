@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.js": "/car-race/static/js/main.6ee546b9.chunk.js",
-    "main.js.map": "/car-race/static/js/main.6ee546b9.chunk.js.map",
+    "main.js": "/car-race/static/js/main.5ee56b95.chunk.js",
+    "main.js.map": "/car-race/static/js/main.5ee56b95.chunk.js.map",
     "runtime-main.js": "/car-race/static/js/runtime-main.7e13bc1e.js",
     "runtime-main.js.map": "/car-race/static/js/runtime-main.7e13bc1e.js.map",
-    "static/js/2.f291279f.chunk.js": "/car-race/static/js/2.f291279f.chunk.js",
-    "static/js/2.f291279f.chunk.js.map": "/car-race/static/js/2.f291279f.chunk.js.map",
+    "static/js/2.aef96b32.chunk.js": "/car-race/static/js/2.aef96b32.chunk.js",
+    "static/js/2.aef96b32.chunk.js.map": "/car-race/static/js/2.aef96b32.chunk.js.map",
     "index.html": "/car-race/index.html",
-    "precache-manifest.168fe3942ba9dbdd29850289461dd02f.js": "/car-race/precache-manifest.168fe3942ba9dbdd29850289461dd02f.js",
+    "precache-manifest.f442c4ecb2d8f86868f0c81869193893.js": "/car-race/precache-manifest.f442c4ecb2d8f86868f0c81869193893.js",
     "service-worker.js": "/car-race/service-worker.js",
-    "static/js/2.f291279f.chunk.js.LICENSE.txt": "/car-race/static/js/2.f291279f.chunk.js.LICENSE.txt",
+    "static/js/2.aef96b32.chunk.js.LICENSE.txt": "/car-race/static/js/2.aef96b32.chunk.js.LICENSE.txt",
     "static/media/RetroGaming.woff2": "/car-race/static/media/RetroGaming.0b863896.woff2",
     "static/media/RetroGaming.woff": "/car-race/static/media/RetroGaming.447cad17.woff",
     "static/media/RetroGaming.ttf": "/car-race/static/media/RetroGaming.4c19fc87.ttf",
+    "static/media/background-paused.png": "/car-race/static/media/background-paused.8f82fbfc.png",
     "static/media/background.gif": "/car-race/static/media/background.d0d2cd17.gif",
     "static/media/car.png": "/car-race/static/media/car.56be0a4e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.7e13bc1e.js",
-    "static/js/2.f291279f.chunk.js",
-    "static/js/main.6ee546b9.chunk.js"
+    "static/js/2.aef96b32.chunk.js",
+    "static/js/main.5ee56b95.chunk.js"
   ]
 }

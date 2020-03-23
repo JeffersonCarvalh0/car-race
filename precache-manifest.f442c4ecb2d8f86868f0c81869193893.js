@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "33e3f952fd716fca5463030649e6b53d",
+    "revision": "db372e44ab32659a153cf9fc8df22fa0",
     "url": "/car-race/index.html"
   },
   {
-    "revision": "a08f5c596365db3e8aed",
-    "url": "/car-race/static/js/2.f291279f.chunk.js"
+    "revision": "eabf8e2e5fafc0421013",
+    "url": "/car-race/static/js/2.aef96b32.chunk.js"
   },
   {
     "revision": "337af8776e89b99720ae0bcbd286cb0d",
-    "url": "/car-race/static/js/2.f291279f.chunk.js.LICENSE.txt"
+    "url": "/car-race/static/js/2.aef96b32.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "68b70305cbcfebf0c3a2",
-    "url": "/car-race/static/js/main.6ee546b9.chunk.js"
+    "revision": "a8a5c35d6fd182a9492f",
+    "url": "/car-race/static/js/main.5ee56b95.chunk.js"
   },
   {
     "revision": "a50cb7ce8de6fe541f95",
@@ -30,6 +30,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4c19fc875e7ba1e6831129de3ab5ac0b",
     "url": "/car-race/static/media/RetroGaming.4c19fc87.ttf"
+  },
+  {
+    "revision": "8f82fbfcbf1e5c16db6d03ac8bd6baa4",
+    "url": "/car-race/static/media/background-paused.8f82fbfc.png"
   },
   {
     "revision": "d0d2cd1752d215c4df68e76e976ec629",
