@@ -21,6 +21,11 @@ const StyledCar = styled.img`
   top: 80vh;
   left: ${(props: StyledProps) => props.x};
   transition: left 250ms ease;
+
+  @media (max-width: 768px) {
+    width: 20vw;
+    height: 20vw;
+  }
 `;
 
 interface Props {
