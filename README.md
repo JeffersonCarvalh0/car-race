@@ -1,3 +1,5 @@
+![Release](https://github.com/JeffersonCarvalh0/car-race/workflows/Release/badge.svg?branch=master)
+
 # Car Race
 A simple car racing game that runs on the browser.
 
