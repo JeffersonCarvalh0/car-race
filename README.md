@@ -16,6 +16,8 @@ to run in your browser.
  - Left arrow - move left
  - Right arrow - move right
  - Escape - Toggle pause
+ 
+On mobile, just tap on the lanes to move the car, and use the pause button at the upper right corner to pause/unpause the game
 
 ## Built with
  - Typescript
