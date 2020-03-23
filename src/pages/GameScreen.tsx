@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
 import useEventListener from '@use-it/event-listener';
 
 import background from '../assets/background.gif';
+import pausedBackground from '../assets/background-paused.png';
 import Car, { Position } from '../components/Car';
+import CenteredText from '../components/CenteredText';
+import PauseOverlay from '../components/PauseOverlay';
 
+interface BackgroundProps {
+  isPaused: boolean;
+}
 const Background = styled.div`
-  background-image: url(${background});
+  background-image: url(${(props: BackgroundProps) =>
+    props.isPaused ? pausedBackground : background});
   background-size: 100% 100%;
   width: 100vh;
   height: 100vh;
 `;
 
-const CountdownNumber = styled.h1`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0 0 0 -25px;
-  font-family: Retro Gaming;
-  font-size: 200px;
-  color: red;
-`;
-
 const GameScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(Position.Middle);
   const [timerValue, setTimerValue] = useState(3);
+  const [isPaused, setPaused] = useState(false);
+  const shouldHandleControls = timerValue === -1 && !isPaused;
 
   const moveLeft = () => {
     if (currentPosition !== Position.Left) {
@@ -40,7 +39,7 @@ const GameScreen = () => {
   };
 
   const handleControls = (event: React.KeyboardEvent): void => {
-    if (timerValue === -1) {
+    if (shouldHandleControls) {
       switch (event.key) {
         case 'A':
         case 'a': {
@@ -69,7 +68,19 @@ const GameScreen = () => {
     }
   };
 
+  const handleMisc = (event: React.KeyboardEvent) => {
+    if (timerValue === -1) {
+      switch (event.key) {
+        case 'Escape': {
+          setPaused(!isPaused);
+          break;
+        }
+      }
+    }
+  };
+
   useEventListener('keydown', handleControls);
+  useEventListener('keydown', handleMisc);
   useEffect(() => {
     if (timerValue >= 0) {
       setTimeout(() => setTimerValue(timerValue - 1), 1000);
@@ -78,8 +89,9 @@ const GameScreen = () => {
 
   return (
     <>
-      <Background>
-        {timerValue >= 0 && <CountdownNumber>{timerValue}</CountdownNumber>}
+      <Background isPaused={isPaused}>
+        {timerValue >= 0 && <CenteredText>{timerValue}</CenteredText>}
+        {isPaused && <PauseOverlay />}
         <Car position={currentPosition} />
       </Background>
     </>
