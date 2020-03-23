@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db372e44ab32659a153cf9fc8df22fa0",
+    "revision": "8704e8abaa0a00dcbdab829fb07d9b60",
     "url": "/car-race/index.html"
   },
   {
-    "revision": "eabf8e2e5fafc0421013",
-    "url": "/car-race/static/js/2.aef96b32.chunk.js"
+    "revision": "3cb7a362b10a9145995b",
+    "url": "/car-race/static/js/2.622dba73.chunk.js"
   },
   {
     "revision": "337af8776e89b99720ae0bcbd286cb0d",
-    "url": "/car-race/static/js/2.aef96b32.chunk.js.LICENSE.txt"
+    "url": "/car-race/static/js/2.622dba73.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a8a5c35d6fd182a9492f",
-    "url": "/car-race/static/js/main.5ee56b95.chunk.js"
+    "revision": "d633e6234d81ecf63cda",
+    "url": "/car-race/static/js/main.6a5e88ef.chunk.js"
   },
   {
     "revision": "a50cb7ce8de6fe541f95",
