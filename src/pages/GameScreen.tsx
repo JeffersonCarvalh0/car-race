@@ -18,6 +18,10 @@ const Background = styled.div`
   background-size: 100% 100%;
   width: 100vh;
   height: 100vh;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 
 const GameScreen = () => {
