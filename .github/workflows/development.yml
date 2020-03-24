@@ -1,6 +1,10 @@
 name: Development
 
-on: push
+on: 
+  push:
+    branches-ignore:
+      - master
+      
 jobs:
   build:
     name: Test
