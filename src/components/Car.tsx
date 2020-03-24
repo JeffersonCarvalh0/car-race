@@ -16,16 +16,11 @@ const StyledCar = styled.img`
   content: url(${car});
   position: relative;
   margin-left: 5%;
-  width: 20vh;
-  height: 20vh;
-  top: 80vh;
+  width: 20%;
+  height: 20%;
+  top: 80%;
   left: ${(props: StyledProps) => props.x};
   transition: left 250ms ease;
-
-  @media (max-width: 768px) {
-    width: 20vw;
-    height: 20vw;
-  }
 `;
 
 interface Props {
