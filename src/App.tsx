@@ -33,24 +33,28 @@ const App = () => {
     <>
       <GlobalStyle />
       <Container>
-        <AnimatePresence exitBeforeEnter>
-          <motion.div
-            key={hasGameStarted && !isLoading ? 'gameScreen' : 'startScreen'}
-            initial={{ x: 600, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -600, opacity: 0 }}
-          >
-            {hasGameStarted ? (
-              <GameScreen />
-            ) : (
-              <StartScreen
-                name={name}
-                setName={setName}
-                handleStart={handleStartGameClick}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+        {isLoading ? (
+          <h1>Loading</h1>
+        ) : (
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              key={hasGameStarted ? 'gameScreen' : 'startScreen'}
+              initial={{ x: 600, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -600, opacity: 0 }}
+            >
+              {hasGameStarted ? (
+                <GameScreen />
+              ) : (
+                <StartScreen
+                  name={name}
+                  setName={setName}
+                  handleStart={handleStartGameClick}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        )}
       </Container>
     </>
   );
