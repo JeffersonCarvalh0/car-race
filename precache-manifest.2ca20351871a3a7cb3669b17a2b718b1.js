@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "33a0b4ad94c48d8ec3f43ed8c285fb2b",
+    "revision": "489724257db6f7b21c87799205824c52",
     "url": "/car-race/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car-race/static/js/2.4c54c3e2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fe37af8d188de8853904",
-    "url": "/car-race/static/js/main.cb24159d.chunk.js"
+    "revision": "2dbdc33695bc6844ad02",
+    "url": "/car-race/static/js/main.d818b416.chunk.js"
   },
   {
     "revision": "a50cb7ce8de6fe541f95",
