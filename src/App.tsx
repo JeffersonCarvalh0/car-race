@@ -25,8 +25,7 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    preloadAssets();
-    setLoading(false);
+    preloadAssets(() => setLoading(false));
   }, []);
 
   return (
@@ -34,7 +33,7 @@ const App = () => {
       <GlobalStyle />
       <Container>
         {isLoading ? (
-          <h1>Loading</h1>
+          <h1>Loading...</h1>
         ) : (
           <AnimatePresence exitBeforeEnter>
             <motion.div

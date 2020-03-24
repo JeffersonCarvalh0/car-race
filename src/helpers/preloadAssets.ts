@@ -11,10 +11,13 @@ const loadImage = (src: string) => {
   });
 };
 
-const preloadAssets = async () => {
-  await loadImage(car);
-  await loadImage(background);
-  await loadImage(pausedBackground);
+const preloadAssets = async (callback: Function) => {
+  await Promise.all([
+    loadImage(car),
+    loadImage(background),
+    loadImage(pausedBackground),
+  ]);
+  callback();
 };
 
 export default preloadAssets;
