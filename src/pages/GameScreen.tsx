@@ -8,6 +8,9 @@ import pausedBackground from '../assets/background-paused.png';
 import Car, { Position } from '../components/Car';
 import CenteredText from '../components/CenteredText';
 import PauseOverlay from '../components/PauseOverlay';
+import Obstacle from '../components/Obstacle';
+
+import useTimer from '../helpers/useTimer';
 
 interface BackgroundProps {
   isPaused: boolean;
@@ -59,15 +62,35 @@ const PauseButton = styled.button`
   }
 `;
 
+const getRandomPosition = (): Position => {
+  const randomNumber = Math.random();
+  switch (true) {
+    case randomNumber >= 0 && randomNumber < 0.333:
+      return Position.Left;
+    case randomNumber >= 0.333 && randomNumber < 0.666:
+      return Position.Middle;
+    case randomNumber >= 0.666 && randomNumber < 1:
+      return Position.Right;
+  }
+
+  return Position.Middle;
+};
+
 const GameScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(Position.Middle);
-  const [timerValue, setTimerValue] = useState(3);
+  const [countdownValue, setCountdownValue] = useState(3);
   const [isPaused, setPaused] = useState(false);
-  const shouldHandleControls = timerValue === -1 && !isPaused;
-  const shouldHandleUI = timerValue === -1;
+  const [currentObstaclePosition, setCurrentObstaclePosition] = useState(
+    getRandomPosition(),
+  );
+  const timer = useTimer();
+  const [newObstacleFlag, setNewObstacleFlag] = useState(true);
+  const shouldHandleControls = countdownValue === -1 && !isPaused;
+  const shouldHandleUI = countdownValue === -1;
 
   const togglePaused = () => {
     if (shouldHandleUI) {
+      isPaused ? timer.resume() : timer.pause();
       setPaused(!isPaused);
     }
   };
@@ -133,17 +156,32 @@ const GameScreen = () => {
 
   useEventListener('keydown', handleKeyboard);
   useEffect(() => {
-    if (timerValue >= 0) {
-      setTimeout(() => setTimerValue(timerValue - 1), 1000);
+    if (countdownValue >= 0) {
+      setTimeout(() => setCountdownValue(countdownValue - 1), 1000);
     }
-  }, [timerValue]);
+  }, [countdownValue]);
+
+  useEffect(() => {
+    if (timer.time >= 2000) {
+      setCurrentObstaclePosition(getRandomPosition());
+      setNewObstacleFlag(!newObstacleFlag);
+      timer.reset();
+    }
+  }, [timer, newObstacleFlag]);
 
   return (
     <>
       <Background isPaused={isPaused}>
-        {timerValue >= 0 && <CenteredText>{timerValue}</CenteredText>}
+        {countdownValue >= 0 && <CenteredText>{countdownValue}</CenteredText>}
         {isPaused && <PauseOverlay />}
         <TapAreaWrapper>
+          {countdownValue === -1 && (
+            <Obstacle
+              position={currentObstaclePosition}
+              time={2000}
+              key={`${newObstacleFlag}`}
+            />
+          )}
           <TapAreaRecognizer onClick={handleTap(Position.Left)} />
           <TapAreaRecognizer onClick={handleTap(Position.Middle)} />
           <TapAreaRecognizer onClick={handleTap(Position.Right)}>
