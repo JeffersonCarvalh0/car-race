@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import GlobalStyle from './globalStyle';
 import StartScreen from './pages/StartScreen';
 import GameScreen from './pages/GameScreen';
+import preloadAssets from './helpers/preloadAssets';
 
 const Container = styled.div`
   height: 100vh;
@@ -19,7 +20,14 @@ const Container = styled.div`
 const App = () => {
   const [name, setName] = useState('');
   const [hasGameStarted, setGameStarted] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const handleStartGameClick = () => setGameStarted(!hasGameStarted);
+
+  useEffect(() => {
+    setLoading(true);
+    preloadAssets();
+    setLoading(false);
+  }, []);
 
   return (
     <>
@@ -27,7 +35,7 @@ const App = () => {
       <Container>
         <AnimatePresence exitBeforeEnter>
           <motion.div
-            key={hasGameStarted ? 'gameScreen' : 'startScreen'}
+            key={hasGameStarted && !isLoading ? 'gameScreen' : 'startScreen'}
             initial={{ x: 600, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -600, opacity: 0 }}
