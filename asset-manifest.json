@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/car-race/static/js/main.676b7b77.chunk.js",
-    "main.js.map": "/car-race/static/js/main.676b7b77.chunk.js.map",
+    "main.js": "/car-race/static/js/main.83f048ec.chunk.js",
+    "main.js.map": "/car-race/static/js/main.83f048ec.chunk.js.map",
     "runtime-main.js": "/car-race/static/js/runtime-main.7e13bc1e.js",
     "runtime-main.js.map": "/car-race/static/js/runtime-main.7e13bc1e.js.map",
     "static/js/2.5b324b3d.chunk.js": "/car-race/static/js/2.5b324b3d.chunk.js",
     "static/js/2.5b324b3d.chunk.js.map": "/car-race/static/js/2.5b324b3d.chunk.js.map",
     "index.html": "/car-race/index.html",
-    "precache-manifest.a268a4248c69a116e691731ff86f96c3.js": "/car-race/precache-manifest.a268a4248c69a116e691731ff86f96c3.js",
+    "precache-manifest.7862c1cbf1e68a2d607baaf9822182dd.js": "/car-race/precache-manifest.7862c1cbf1e68a2d607baaf9822182dd.js",
     "service-worker.js": "/car-race/service-worker.js",
     "static/js/2.5b324b3d.chunk.js.LICENSE.txt": "/car-race/static/js/2.5b324b3d.chunk.js.LICENSE.txt",
     "static/media/RetroGaming.woff2": "/car-race/static/media/RetroGaming.0b863896.woff2",
@@ -21,6 +21,6 @@
   "entrypoints": [
     "static/js/runtime-main.7e13bc1e.js",
     "static/js/2.5b324b3d.chunk.js",
-    "static/js/main.676b7b77.chunk.js"
+    "static/js/main.83f048ec.chunk.js"
   ]
 }
