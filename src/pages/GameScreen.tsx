@@ -73,23 +73,26 @@ const GameScreen = () => {
   const [currentObstaclePosition, setCurrentObstaclePosition] = useState(
     getRandomPosition,
   );
-  const timer = useTimer();
   const [newObstacleFlag, setNewObstacleFlag] = useState(true);
+  const [obstacleTimespan, setObstacleTimespan] = useState(1500);
+  const [isTurboActive, setTurboActive] = useState(false);
+  const obstacleTimer = useTimer();
+  const turboTimer = useTimer();
   const firstRender = useRef(true);
 
   const shouldHandleControls =
     countdownValue === -1 && !isPaused && !hasCrashed;
   const shouldHandleUI = countdownValue === -1 && !hasCrashed;
-  const obstacleTimespan = 1500;
   const didCrash =
     countdownValue === -1 &&
     !firstRender.current &&
-    timer.time >= obstacleTimespan - 200 &&
+    obstacleTimer.time >= obstacleTimespan - 200 &&
     currentPosition === currentObstaclePosition;
 
   const togglePaused = () => {
     if (shouldHandleUI) {
-      isPaused ? timer.resume() : timer.pause();
+      isPaused ? obstacleTimer.resume() : obstacleTimer.pause();
+      isPaused ? turboTimer.resume() : turboTimer.pause();
       setPaused(!isPaused);
     }
   };
@@ -106,6 +109,13 @@ const GameScreen = () => {
     }
   };
 
+  const turbo = () => {
+    if (turboTimer.time >= 5000) {
+      setTurboActive(true);
+      turboTimer.pause();
+    }
+  };
+
   const handleTap = (position: Position) => {
     return () => {
       if (shouldHandleControls) {
@@ -117,10 +127,12 @@ const GameScreen = () => {
   const reset = () => {
     setCrashed(false);
     setCurrentPosition(Position.Middle);
-    timer.reset();
     setCountdownValue(3);
     firstRender.current = true;
-    timer.resume();
+    obstacleTimer.reset();
+    obstacleTimer.resume();
+    turboTimer.reset();
+    turboTimer.resume();
   };
 
   const handleKeyboard = (event: React.KeyboardEvent): void => {
@@ -149,6 +161,12 @@ const GameScreen = () => {
           moveRight();
           break;
         }
+        case 'W':
+        case 'w':
+        case 'ArrowUp': {
+          turbo();
+          break;
+        }
       }
     }
 
@@ -163,27 +181,50 @@ const GameScreen = () => {
   };
 
   useEventListener('keydown', handleKeyboard);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      turboTimer.reset();
+      turboTimer.resume();
+    }
+  }, [firstRender, turboTimer]);
+
   useEffect(() => {
     if (countdownValue >= 0) {
-      setTimeout(() => setCountdownValue(countdownValue - 1), 1000);
+      setTimeout(() => setCountdownValue(prev => prev - 1), 1000);
     }
   }, [countdownValue]);
 
   useEffect(() => {
+    if (isTurboActive) {
+      setObstacleTimespan(750);
+      setTimeout(() => {
+        setObstacleTimespan(1500);
+        setTurboActive(false);
+        turboTimer.reset();
+        turboTimer.resume();
+      }, 3000);
+    }
+  }, [isTurboActive, obstacleTimespan, turboTimer]);
+
+  useEffect(() => {
     if (didCrash) {
       setCrashed(true);
-      timer.pause();
+      obstacleTimer.pause();
+      turboTimer.pause();
     }
+  }, [didCrash, obstacleTimer, turboTimer]);
 
-    if (countdownValue === -1 && timer.time >= obstacleTimespan) {
+  useEffect(() => {
+    if (countdownValue === -1 && obstacleTimer.time >= obstacleTimespan) {
       if (firstRender.current) firstRender.current = false;
       setCurrentObstaclePosition(getRandomPosition());
       setNewObstacleFlag(!newObstacleFlag);
-      timer.reset();
+      obstacleTimer.reset();
     }
   }, [
-    timer,
-    didCrash,
+    obstacleTimer,
+    obstacleTimespan,
     countdownValue,
     newObstacleFlag,
     currentObstaclePosition,
