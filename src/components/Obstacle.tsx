@@ -21,7 +21,7 @@ const obstacleMovement = (props: StyledProps) => keyframes`
 
 const StyledObstacle = styled.img`
   content: url(${obstacle});
-  position: relative;
+  position: absolute;
   margin-left: 5%;
   width: 20%;
   height: 20%;
