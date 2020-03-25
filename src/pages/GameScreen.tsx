@@ -80,7 +80,7 @@ const GameScreen = () => {
   const shouldHandleControls =
     countdownValue === -1 && !isPaused && !hasCrashed;
   const shouldHandleUI = countdownValue === -1 && !hasCrashed;
-  const obstacleTimespan = 1500;
+  const obstacleTimespan = 750;
   const didCrash =
     countdownValue === -1 &&
     !firstRender.current &&
@@ -90,19 +90,19 @@ const GameScreen = () => {
   const togglePaused = () => {
     if (shouldHandleUI) {
       isPaused ? timer.resume() : timer.pause();
-      setPaused(!isPaused);
+      setPaused(prev => !prev);
     }
   };
 
   const moveLeft = () => {
     if (currentPosition !== Position.Left) {
-      setCurrentPosition(currentPosition - 1);
+      setCurrentPosition(prev => prev - 1);
     }
   };
 
   const moveRight = () => {
     if (currentPosition !== Position.Right) {
-      setCurrentPosition(currentPosition + 1);
+      setCurrentPosition(prev => prev + 1);
     }
   };
 
@@ -165,7 +165,7 @@ const GameScreen = () => {
   useEventListener('keydown', handleKeyboard);
   useEffect(() => {
     if (countdownValue >= 0) {
-      setTimeout(() => setCountdownValue(countdownValue - 1), 1000);
+      setTimeout(() => setCountdownValue(prev => prev - 1), 1000);
     }
   }, [countdownValue]);
 
@@ -174,7 +174,9 @@ const GameScreen = () => {
       setCrashed(true);
       timer.pause();
     }
+  }, [didCrash, timer]);
 
+  useEffect(() => {
     if (countdownValue === -1 && timer.time >= obstacleTimespan) {
       if (firstRender.current) firstRender.current = false;
       setCurrentObstaclePosition(getRandomPosition());
@@ -183,7 +185,6 @@ const GameScreen = () => {
     }
   }, [
     timer,
-    didCrash,
     countdownValue,
     newObstacleFlag,
     currentObstaclePosition,
