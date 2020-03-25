@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import useEventListener from '@use-it/event-listener';
@@ -7,15 +7,19 @@ import background from '../assets/background.gif';
 import pausedBackground from '../assets/background-paused.png';
 import Car, { Position } from '../components/Car';
 import CenteredText from '../components/CenteredText';
-import PauseOverlay from '../components/PauseOverlay';
+import Overlay from '../components/Overlay';
+import Obstacle from '../components/Obstacle';
+import TitleButton from '../components/TitleButton';
+
+import useTimer from '../helpers/useTimer';
 
 interface BackgroundProps {
-  isPaused: boolean;
+  frozenBackground: boolean;
 }
 const Background = styled.div`
   display: flex;
   background-image: url(${(props: BackgroundProps) =>
-    props.isPaused ? pausedBackground : background});
+    props.frozenBackground ? pausedBackground : background});
   background-size: 100% 100%;
   width: 100vh;
   height: 100vh;
@@ -59,15 +63,33 @@ const PauseButton = styled.button`
   }
 `;
 
+const getRandomPosition = (): Position => Math.floor((Math.random() * 100) % 3);
+
 const GameScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(Position.Middle);
-  const [timerValue, setTimerValue] = useState(3);
+  const [countdownValue, setCountdownValue] = useState(3);
   const [isPaused, setPaused] = useState(false);
-  const shouldHandleControls = timerValue === -1 && !isPaused;
-  const shouldHandleUI = timerValue === -1;
+  const [hasCrashed, setCrashed] = useState(false);
+  const [currentObstaclePosition, setCurrentObstaclePosition] = useState(
+    getRandomPosition,
+  );
+  const timer = useTimer();
+  const [newObstacleFlag, setNewObstacleFlag] = useState(true);
+  const firstRender = useRef(true);
+
+  const shouldHandleControls =
+    countdownValue === -1 && !isPaused && !hasCrashed;
+  const shouldHandleUI = countdownValue === -1 && !hasCrashed;
+  const obstacleTimespan = 1500;
+  const didCrash =
+    countdownValue === -1 &&
+    !firstRender.current &&
+    timer.time >= obstacleTimespan - 200 &&
+    currentPosition === currentObstaclePosition;
 
   const togglePaused = () => {
     if (shouldHandleUI) {
+      isPaused ? timer.resume() : timer.pause();
       setPaused(!isPaused);
     }
   };
@@ -90,6 +112,15 @@ const GameScreen = () => {
         setCurrentPosition(position);
       }
     };
+  };
+
+  const reset = () => {
+    setCrashed(false);
+    setCurrentPosition(Position.Middle);
+    timer.reset();
+    setCountdownValue(3);
+    firstRender.current = true;
+    timer.resume();
   };
 
   const handleKeyboard = (event: React.KeyboardEvent): void => {
@@ -133,17 +164,51 @@ const GameScreen = () => {
 
   useEventListener('keydown', handleKeyboard);
   useEffect(() => {
-    if (timerValue >= 0) {
-      setTimeout(() => setTimerValue(timerValue - 1), 1000);
+    if (countdownValue >= 0) {
+      setTimeout(() => setCountdownValue(countdownValue - 1), 1000);
     }
-  }, [timerValue]);
+  }, [countdownValue]);
+
+  useEffect(() => {
+    if (didCrash) {
+      setCrashed(true);
+      timer.pause();
+    }
+
+    if (countdownValue === -1 && timer.time >= obstacleTimespan) {
+      if (firstRender.current) firstRender.current = false;
+      setCurrentObstaclePosition(getRandomPosition());
+      setNewObstacleFlag(!newObstacleFlag);
+      timer.reset();
+    }
+  }, [
+    timer,
+    didCrash,
+    countdownValue,
+    newObstacleFlag,
+    currentObstaclePosition,
+    currentPosition,
+  ]);
 
   return (
     <>
-      <Background isPaused={isPaused}>
-        {timerValue >= 0 && <CenteredText>{timerValue}</CenteredText>}
-        {isPaused && <PauseOverlay />}
+      <Background frozenBackground={isPaused || hasCrashed}>
+        {countdownValue >= 0 && <CenteredText>{countdownValue}</CenteredText>}
+        {isPaused && <Overlay text="Paused" />}
+        {hasCrashed && (
+          <Overlay text="Game Over">
+            <TitleButton isVisible label="Tentar novamente" onClick={reset} />
+          </Overlay>
+        )}
         <TapAreaWrapper>
+          {countdownValue === -1 && (
+            <Obstacle
+              position={currentObstaclePosition}
+              time={obstacleTimespan}
+              key={`${newObstacleFlag}`}
+              isPaused={isPaused || hasCrashed}
+            />
+          )}
           <TapAreaRecognizer onClick={handleTap(Position.Left)} />
           <TapAreaRecognizer onClick={handleTap(Position.Middle)} />
           <TapAreaRecognizer onClick={handleTap(Position.Right)}>
