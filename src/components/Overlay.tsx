@@ -11,12 +11,17 @@ const Background = styled.div`
   z-index: 2;
 `;
 
-const PauseOverlay = () => {
+interface Props {
+  text: string;
+  children?: React.ReactNode;
+}
+const Overlay = ({ text, children }: Props) => {
   return (
     <Background>
-      <CenteredText>Paused</CenteredText>
+      <CenteredText>{text}</CenteredText>
+      {children}
     </Background>
   );
 };
 
-export default PauseOverlay;
+export default Overlay;
