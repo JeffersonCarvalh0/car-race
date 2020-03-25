@@ -20,7 +20,7 @@ const StyledCar = styled.img`
   height: 20%;
   top: 80%;
   left: ${(props: StyledProps) => props.x};
-  transition: left 250ms ease;
+  transition: left 100ms ease;
 `;
 
 interface Props {
