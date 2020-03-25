@@ -65,5 +65,9 @@ Turn the `obstacleTimespan` into a state and cut it by half if the `isTurboActiv
 #### Deploy
 The game is being deployed to github pages. CI/CD is being managed by github actions. There is a development workflow for development that performs tests, type checks and lints the code which runs at every commit(except to master) and a release workflow that does everything the developmont workflow does and automatically deploys to github pages. The release workflow runs at every push to master, which includes PR merges.
 
+### Known bugs
+ - Obstacles appearing in the wrong position in the horizon
+ - Cars not being shown in firefox
+
 ## License
 Licensed under MIT. See [LICENSE](LICENSE) for details.
