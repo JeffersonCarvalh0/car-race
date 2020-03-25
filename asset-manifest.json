@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.js": "/car-race/static/js/main.d818b416.chunk.js",
-    "main.js.map": "/car-race/static/js/main.d818b416.chunk.js.map",
+    "main.js": "/car-race/static/js/main.676b7b77.chunk.js",
+    "main.js.map": "/car-race/static/js/main.676b7b77.chunk.js.map",
     "runtime-main.js": "/car-race/static/js/runtime-main.7e13bc1e.js",
     "runtime-main.js.map": "/car-race/static/js/runtime-main.7e13bc1e.js.map",
-    "static/js/2.4c54c3e2.chunk.js": "/car-race/static/js/2.4c54c3e2.chunk.js",
-    "static/js/2.4c54c3e2.chunk.js.map": "/car-race/static/js/2.4c54c3e2.chunk.js.map",
+    "static/js/2.5b324b3d.chunk.js": "/car-race/static/js/2.5b324b3d.chunk.js",
+    "static/js/2.5b324b3d.chunk.js.map": "/car-race/static/js/2.5b324b3d.chunk.js.map",
     "index.html": "/car-race/index.html",
-    "precache-manifest.2ca20351871a3a7cb3669b17a2b718b1.js": "/car-race/precache-manifest.2ca20351871a3a7cb3669b17a2b718b1.js",
+    "precache-manifest.a268a4248c69a116e691731ff86f96c3.js": "/car-race/precache-manifest.a268a4248c69a116e691731ff86f96c3.js",
     "service-worker.js": "/car-race/service-worker.js",
-    "static/js/2.4c54c3e2.chunk.js.LICENSE.txt": "/car-race/static/js/2.4c54c3e2.chunk.js.LICENSE.txt",
+    "static/js/2.5b324b3d.chunk.js.LICENSE.txt": "/car-race/static/js/2.5b324b3d.chunk.js.LICENSE.txt",
     "static/media/RetroGaming.woff2": "/car-race/static/media/RetroGaming.0b863896.woff2",
     "static/media/RetroGaming.woff": "/car-race/static/media/RetroGaming.447cad17.woff",
     "static/media/RetroGaming.ttf": "/car-race/static/media/RetroGaming.4c19fc87.ttf",
     "static/media/background-paused.png": "/car-race/static/media/background-paused.8f82fbfc.png",
     "static/media/background.gif": "/car-race/static/media/background.d0d2cd17.gif",
-    "static/media/car.png": "/car-race/static/media/car.56be0a4e.png"
+    "static/media/car.png": "/car-race/static/media/car.56be0a4e.png",
+    "static/media/obstacle.png": "/car-race/static/media/obstacle.45695e49.png"
   },
   "entrypoints": [
     "static/js/runtime-main.7e13bc1e.js",
-    "static/js/2.4c54c3e2.chunk.js",
-    "static/js/main.d818b416.chunk.js"
+    "static/js/2.5b324b3d.chunk.js",
+    "static/js/main.676b7b77.chunk.js"
   ]
 }

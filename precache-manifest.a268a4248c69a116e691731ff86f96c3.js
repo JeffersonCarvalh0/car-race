@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "489724257db6f7b21c87799205824c52",
+    "revision": "faec54e2d6e95cec020362dd2ca000c9",
     "url": "/car-race/index.html"
   },
   {
-    "revision": "2705f19f10e6006d96ea",
-    "url": "/car-race/static/js/2.4c54c3e2.chunk.js"
+    "revision": "166cb2ea83ee8e787a12",
+    "url": "/car-race/static/js/2.5b324b3d.chunk.js"
   },
   {
     "revision": "337af8776e89b99720ae0bcbd286cb0d",
-    "url": "/car-race/static/js/2.4c54c3e2.chunk.js.LICENSE.txt"
+    "url": "/car-race/static/js/2.5b324b3d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2dbdc33695bc6844ad02",
-    "url": "/car-race/static/js/main.d818b416.chunk.js"
+    "revision": "81282ccfff47d14fa91d",
+    "url": "/car-race/static/js/main.676b7b77.chunk.js"
   },
   {
     "revision": "a50cb7ce8de6fe541f95",
@@ -42,5 +42,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "56be0a4e7be4b661072436aa22f66f64",
     "url": "/car-race/static/media/car.56be0a4e.png"
+  },
+  {
+    "revision": "45695e49e09069fabeb35f552c0cb886",
+    "url": "/car-race/static/media/obstacle.45695e49.png"
   }
 ]);
